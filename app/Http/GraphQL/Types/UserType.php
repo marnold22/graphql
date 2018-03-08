@@ -6,6 +6,7 @@ namespace App\Http\GraphQL\Types;
 
 use GraphQL;
 use GraphQL\Type\Definition\Type;
+use App\Http\GraphQL\Connections\UserJobsConnection;
 use Nuwave\Lighthouse\Support\Definition\GraphQLType;
 use Nuwave\Lighthouse\Support\Interfaces\RelayType;
 
@@ -51,6 +52,7 @@ class UserType extends GraphQLType implements RelayType
                 'type' => Type::string(),
                 'description' => 'Email address of the employee.',
             ],
+            'jobs' => GraphQL::connection(new UserJobsConnection)->field(),
         ];
     }
 }
